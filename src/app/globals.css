@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #04070f;
+  --bg-secondary: #080e1c;
+  --bg-tertiary: #0c1525;
+  --bg-card: #101d30;
+  --cyan: #00d4f5;
+  --cyan-dim: rgba(0, 212, 245, 0.12);
+  --cyan-glow: rgba(0, 212, 245, 0.25);
+  --orange: #ff6b35;
+  --text-primary: #c8dff5;
+  --text-secondary: #4a7090;
+  --text-muted: #2a4560;
+  --border: rgba(0, 212, 245, 0.18);
+  --border-dim: rgba(0, 212, 245, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* Grid overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 212, 245, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 245, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Custom range inputs */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--cyan);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 6px var(--cyan-glow);
+}
+
+/* Select */
+select {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+select:focus { border-color: var(--cyan); }
+select option { background: var(--bg-tertiary); }
+
+/* Focus ring override */
+*:focus-visible { outline: 1px solid var(--cyan); outline-offset: 2px; }
+
+/* Canvas cursor */
+.timeline-canvas { cursor: crosshair; }
+.timeline-canvas:active { cursor: ew-resize; }
